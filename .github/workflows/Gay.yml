@@ -44,4 +44,4 @@ jobs:
      - name: tunnel
        run: |
            cd /home/runner/Downloads
-           ./ngrok -all
+           ./ngrok tcp 22
